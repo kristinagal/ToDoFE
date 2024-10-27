@@ -2,28 +2,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
     display: flex;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 100px;
     justify-content: center;
     align-items: center;
     margin: 0;
-}
-
-.content-container {
-    background-color: #ffffff;
-    padding: 30px;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    width: 500px;
-    max-width: 90%;
-}
-
-#todoList {
-    overflow-y: auto; 
-    margin-top: 20px;
 }
 
 .todo-container {
@@ -32,6 +14,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    max-width: 90%;
 }
 
 .greeting-container {
@@ -81,7 +65,7 @@ body {
     box-sizing: border-box;
 }
 
-input, button, textarea {
+input, textarea {
     display: block;
     width: 100%;
     padding: 10px;
@@ -91,31 +75,32 @@ input, button, textarea {
     box-sizing: border-box;
 }
 
-button {
+/* Submit and Cancel buttons */
+.form-buttons button {
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    width: 48%;
+    box-sizing: border-box;
 }
 
-.form-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-}
-
-#submitTodoBtn {
+/* Save (Submit) button */
+.save-btn {
     background-color: #4CAF50;
-    color: white;
 }
 
-#cancelTodoBtn {
-    background-color: #f44336;
-    color: white;
-}
-
-#submitTodoBtn:hover {
+.save-btn:hover {
     background-color: #45a049;
 }
 
-#cancelTodoBtn:hover {
+/* Cancel button */
+.cancel-btn {
+    background-color: #f44336;
+}
+
+.cancel-btn:hover {
     background-color: #d32f2f;
 }
 
@@ -128,22 +113,6 @@ button {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.todo-content-container {
-    background-color: #ffffff;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.todo-content {
-    font-size: 1em;
-    color: #333;
-    line-height: 1.4;
-}
-
-/* edit and delete */
 .button-group {
     display: flex;
     gap: 10px;
