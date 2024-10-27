@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <div class="todo-container">
+        <div class="greeting-container">
+            <h2 id="userInfo"></h2>
+            <button id="logoutBtn">
+                <img src="logoutbutton.png" alt="Logout" class="logout-icon">
+            </button>
+        </div>
+
+        <button id="addTodoBtn">Add To-Do</button>
+
+        <div id="addTodoForm" style="display: none;">
+            <input type="text" id="todoType" placeholder="Type">
+            <textarea id="todoContent" placeholder="Content" rows="4"></textarea>
+            <input type="date" id="todoDate">
+            <div class="form-buttons">
+                <button id="submitTodoBtn">Submit To-Do</button>
+                <button id="cancelTodoBtn">Cancel</button>
+            </div>
+        </div>
+
+        <div id="todoList"></div>
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+</html>
