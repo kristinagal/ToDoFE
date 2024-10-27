@@ -2,8 +2,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
     display: flex;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
     padding-top: 10px;
     padding-bottom: 10px;
     justify-content: center;
