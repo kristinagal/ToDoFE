@@ -36,7 +36,7 @@ function formatDateInput(dateString) {
 // Format date for display as "DD MMMM YYYY"
 function formatDateDisplay(dateString) {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('en-GB', {
         day: 'numeric',
         month: 'long',
         year: 'numeric'
@@ -70,7 +70,7 @@ function addTodo() {
         endDate: document.getElementById('todoDate').value
     };
 
-    fetch('https://localhost:7171/api/ToDo', {
+    fetch('https://localhost:7171/api/ToDo', { /*fetch api options - method, headers, body*/
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(todoData)
@@ -86,7 +86,7 @@ function addTodo() {
     .catch(error => displayError(error.message));
 }
 
-// Fetch all to-dos for the logged-in user
+// Fetch all to-dos for current user
 function fetchTodos(userId) {
     fetch('https://localhost:7171/api/ToDo', { method: 'GET' })
     .then(response => {
@@ -99,12 +99,11 @@ function fetchTodos(userId) {
     .catch(error => displayError(error.message));
 }
 
-// Display a To-Do item in the DOM
-function addToDOM(todo) {
-    const todoList = document.getElementById('todoList');
-    const todoDiv = document.createElement('div');
+// show todo item
+function addToDOM(todo, container = null) {
+    // no container - create new div
+    const todoDiv = container || document.createElement('div');
     todoDiv.classList.add('todo-item');
-
     todoDiv.innerHTML = `
         <div class="todo-content">
             <strong>Type:</strong> ${todo.type} <br>
@@ -129,10 +128,13 @@ function addToDOM(todo) {
     buttonGroup.appendChild(deleteBtn);
 
     todoDiv.appendChild(buttonGroup);
-    todoList.appendChild(todoDiv);
+
+    if (!container) {
+        document.getElementById('todoList').appendChild(todoDiv);
+    }
 }
 
-// Open the edit form for a To-Do item
+// edit form
 function openEditForm(todo, todoDiv) {
     const editForm = document.createElement('div');
     editForm.classList.add('edit-form');
@@ -154,7 +156,7 @@ function openEditForm(todo, todoDiv) {
     editForm.querySelector('.cancel-btn').addEventListener('click', () => cancelEdit(todo, todoDiv));
 }
 
-// Save edits to a To-Do item
+// save edit
 function saveEdit(todoId, todoDiv, editForm) {
     const updatedTodo = {
         id: todoId,
@@ -179,7 +181,7 @@ function saveEdit(todoId, todoDiv, editForm) {
     .catch(error => displayError(error.message));
 }
 
-// Update the To-Do item in the DOM after a successful edit
+// show updated todo item
 function updateTodoInDOM(todoDiv, updatedTodo) {
     todoDiv.innerHTML = `
         <div class="todo-content">
@@ -207,13 +209,12 @@ function updateTodoInDOM(todoDiv, updatedTodo) {
     todoDiv.appendChild(buttonGroup);
 }
 
-// Cancel editing and restore the original To-Do item
 function cancelEdit(todo, todoDiv) {
     todoDiv.innerHTML = '';
-    addToDOM(todo);
+
+    addToDOM(todo, todoDiv);
 }
 
-// Delete a To-Do item
 function deleteTodo(todoId, todoDiv) {
     fetch(`https://localhost:7171/api/ToDo/${todoId}`, { method: 'DELETE' })
     .then(response => {
