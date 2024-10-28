@@ -1,9 +1,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
-    display: flex;
-    padding: 10px 100px;
-    justify-content: center;
+    display: flex; /*flex container - enables Flexbox layout, a CSS layout model*/
+    padding: 10px 100px1;
+    justify-content: center; /* horizontal axis - center*/
     align-items: center;
     margin: 0;
 }
@@ -21,7 +21,7 @@ body {
 .greeting-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /*both items aligned on diff sides*/
     margin-bottom: 15px;
 }
 
@@ -82,11 +82,12 @@ input, textarea {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    width: 48%;
+    width: 49%;
+    margin: 10px 0;
     box-sizing: border-box;
 }
 
-/* Save (Submit) button */
+/* Save/Submit button */
 .save-btn {
     background-color: #4CAF50;
 }
